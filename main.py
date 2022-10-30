@@ -21,14 +21,17 @@ TfidfVectorizer
 def documentTermMatrix(docs: 'list[str]'):
     vectorizer = TfidfVectorizer(lowercase=True, stop_words='english', tokenizer=word_tokenize)
     X = vectorizer.fit_transform(docs)
-    print(X)
-    vectorizer.get_feature_names_out()
+    # print(vectorizer.get_feature_names_out())
+    # compute the frequency of the terms
+    cft = []
+    for col in range(X.shape):
+        cft.append(X.getcol(0).sum())
     # matrix: dict = {}
     # for lemme in lemmeList:
     #     if (mlemme := matrix.get(lemme, None)) is None:
     #         matrix.update({lemme: 1})
     #     else:
-    #         matrix.update({lemme: mlemme+1})
+    #       w  matrix.update({lemme: mlemme+1})
 
 
 if __name__ == '__main__':
